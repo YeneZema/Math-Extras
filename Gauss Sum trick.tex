@@ -1,0 +1,164 @@
+\documentclass[12pt]{article}
+
+% This first part of the file is called the PREAMBLE. It includes
+% customizations and command definitions. The preamble is everything
+% between \documentclass and \begin{document}.
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage[hidelinks]{hyperref}
+
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+\begin{document}
+
+
+\nocite{}
+
+\title{The Implication of Gauss Sum}
+
+\author{Miliyon T.}
+\date{October 7, 2013}
+\maketitle
+
+\begin{abstract}
+  As a freshman student here in Addis Ababa university, I was wondering to know the proof of Nael's formula,
+      $$D_n=(2-n) A_1-\frac{nd}{2}(n-1),$$
+  in which he computed the total difference of a sequence of integers with common difference. At first glance the formula seems to be perplexed. But it is not. In fact, it is too simple. In this concise paper, we will try to prove Nael's formula in a simple manner.
+\end{abstract}
+
+\section{\href{www.albohessab.weebly.com}{Introduction}}
+\begin{thm}\label{the01} For any positive integer $n$ we have
+\begin{equation}
+1+2+3+\cdot\cdot\cdot +n=\frac{n(n+1)}{2}
+\end{equation}
+\end{thm}
+
+\noindent This result has been known by mathematicians\footnote{In $499$ AD Arybhata gave a formula for the sum of the first $n$ integers. Brahamagupta extended Arybhta's result to squares and cubes of the first $n$ integers.} far more from Gauss. But there is a beautiful mystical story about this problem and how the child prodigy \href{www.wikipedia.org/Gauss}{\textbf{Carl Friedreich Gauss}} approached it.
+The story goes like this$\ldots$ when Gauss was only ten his Math teacher was bored of teaching and he asked his students to add the numbers(naturals) from $1$ up to $100$. Eventually, Gauss came up with the correct answer less than in a minute.
+
+\medskip
+
+\noindent This is how Gauss did it,
+
+\medskip
+
+\begin{tabular}{ccccccccccccccccccccccccccccccc}
+  & 1 &+ 2 &+ 3 &+ $\cdot\cdot\cdot$ &+ 98 &+ 99 &+ 100 \\
++ & 100 &+ 99 &+ 98 &+ $\cdot\cdot\cdot$ &+ 3 &+ 2 &+ 1 \\
+\hline
+= & 101 &+ 101 &+ 101 &+ $\cdot\cdot\cdot$ &+ 101 &+ 101 &+ 101 \\
+\end{tabular}\\
+Clearly, as we can see from the above there are hundred $101$'s. Thus
+$$ 2(1+2+3+\cdot\cdot\cdot+100)=100(101)$$
+$$(1+2+3+\cdot\cdot\cdot+100)=\frac{100(100+1)}{2}$$
+The proof of theorem (\ref{the01}) is now trivial. Just put $n$ in place of $100$.
+\newpage
+\noindent Gauss sum can be extended to non consecutive equally spaced numbers. i.e. a sequence of numbers with common difference.\\
+Let
+\[A_1 + (A_1 + d) + (A_1 +2d)+\cdot\cdot\cdot +(A_1 +(n-1)d)\]
+be the sum of a sequence of numbers with common difference $d$.\\
+Now, let's apply Gauss trick
+
+\medskip
+
+\begin{tabular}{ccccccccccccccccccccccccccccccc}
+  & $A_1$  &+ $(A_1 + d)$  &+ $\cdot\cdot\cdot$ &+ $(A_1 +(n-2)d)$ &+ $(A_1 +(n-1)d)$ \\
++ & $(A_1 +(n-1)d)$ &+ $(A_1 +(n-2)d)$ &+ $\cdot\cdot\cdot$ &+  $(A_1 + d)$ &+ $A_1$ \\
+\hline
+= & $(2A_1 +(n-1)d)$ &+ $(2A_1 +(n-1)d)$ &+ $\cdot\cdot\cdot$ &+ $(2A_1 +(n-1)d)$ &+ $(2A_1 +(n-1)d)$
+\end{tabular}
+
+\medskip
+
+\noindent There are $n$ number of $(2A_1 +(n-1)d)$.
+\begin{align}
+2(A_1 + (A_1 + d) + (A_1 +2d)+\cdot\cdot\cdot +(A_1 +(n-1)d))=n(2A_1 +(n-1)d)\\
+A_1 + (A_1 + d) + (A_1 +2d)+\cdot\cdot\cdot +(A_1 +(n-1)d)=\frac{n}{2}(2A_1 +(n-1)d)\label{sree}
+\end{align}
+Let's do a substitution $A_n=A_1 +(n-1)d$. Just to simplify things. (\ref{sree}) becomes
+\begin{equation}\label{foor}
+A_1 + A_2 + A_3+\cdot\cdot\cdot +A_n=\frac{n}{2}(2A_1 +(n-1)d),\qquad \text{ where }d=A_i -A_{i-1}
+\end{equation}
+
+\begin{notn} Let us denote the sum a sequence $A_1,A_2,A_3,\cdot\cdot\cdot ,A_n$ by
+\[
+S_n:=A_1+A_2+A_3+\cdot\cdot\cdot +A_n
+\]
+where $A_i$ is $i^{th}$ term in the sequence $A_1,A_2,\cdot\cdot\cdot ,A_n$.\\
+Similarly, we denote the total difference of a sequence $A_1,A_2,\cdot\cdot\cdot ,A_n$ starting from $A_1$ by
+\[
+D_n:=A_1-A_2-A_3- \cdot\cdot\cdot -A_n
+\]
+where $A_i$ is $i^{th}$ term in the sequence $A_1,A_2,A_3,\cdot\cdot\cdot ,A_n$.
+\end{notn}
+
+\section{Basic Result}
+
+\begin{cor}[Gauss difference] For a sequence of integers $A_1,A_2,A_3,\cdot\cdot\cdot ,A_n$ the total difference starting from $A_1$ is given by
+\[D_n=(2-n) A_1-\frac{nd}{2}(n-1)\]
+where $d$ is the common difference.
+\end{cor}
+
+\begin{proof}
+\begin{align*}
+D_n &=A_1-A_2-A_3- \cdot\cdot\cdot -A_n\\
+    &= A_1-(A_2+A_3+ \cdot\cdot\cdot +A_n)\\
+    &= A_1-(A_1+A_2+A_3+ \cdot\cdot\cdot +A_n-A_1)\\
+    &= A_1-(S_n-A_1)\\
+    &= 2A_1-S_n
+\end{align*}
+But from (\ref{foor}), $S_n=\frac{n}{2}(2A_1 +(n-1)d)$
+\[
+D_n =2A_1-\frac{n}{2}(2A_1 +(n-1)d)
+\]
+\[\therefore D_n=(2-n) A_1-\frac{nd}{2}(n-1)\]
+\end{proof}
+\begin{thebibliography}{9}
+
+\bibitem{amsshort}
+[John Conway]
+The Book of Numbers (1996).
+
+\bibitem{May}
+[Graham, Knuth]
+Concrete Mathematics, Addison-Wesley, 1989.
+
+\end{thebibliography}
+
+\end{document}

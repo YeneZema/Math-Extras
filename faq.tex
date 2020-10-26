@@ -1,0 +1,314 @@
+\documentclass[11pt]{article}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes,shadows,positioning,backgrounds}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amscd,xspace}
+\usepackage{graphicx,xcolor,lipsum,cancel}
+\usepackage[margin=1in]{geometry}
+\usepackage[linkcolor=blue]{hyperref}
+\hypersetup{pdfborder={0 0 0}, colorlinks=true, urlcolor=blue}
+\usepackage{todonotes}
+\usepackage{tocloft}
+\usepackage{microtype}
+\usepackage{palatino}
+
+%%% Headers and footers
+\usepackage{fancyhdr}												% Needed to define custom headers/footers
+	\pagestyle{fancy}												% Enabling the custom headers/footers
+\usepackage{lastpage}	
+\usepackage{afterpage}
+
+\usepackage{pgfornament}
+\usepackage{tikzrput}
+
+% Header (empty)
+\lhead{}
+\chead{}
+\rhead{}
+% Footer (you may change this to your own needs)
+\lfoot{\footnotesize \texttt{www.albohessab.weebly.com} \textbullet ~Miliyon T.}
+\cfoot{}
+\rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+% various theorems, numbered by section
+\newtheorem{example}{Example}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+%777777777777777777777777777777
+
+\setlength\parindent{0pt}
+\newlistof{questions}{faq}{\large List of Frequently Asked Questions}
+\setlength\cftbeforefaqtitleskip{4em}
+\setlength\cftafterfaqtitleskip{1em}
+\setlength\cftparskip{.3em}
+\newcommand{\question}[1]
+{
+\refstepcounter{questions}
+\par\noindent
+\phantomsection
+\addcontentsline{faq}{questions}{#1}
+\todo[inline, color=green!40]{\textbf{#1}}
+\vspace{1em}
+}
+
+\makeatletter							% Title
+\def\printtitle{%						
+    {\centering \@title\par}}
+\def\printauthor{%					
+    {\centering \large \@author}}				
+
+\title{		
+\vspace*{150px}										% 2cm spacing			
+\begin{center}
+\rput(0,0){\pgfornament[scale=1]{122}}
+\end{center}
+\LARGE \textbf{\uppercase{FAQ's in Mathematics}}	% Title
+\begin{center}
+\rput(0,0){\pgfornament[scale=1]{122}}		
+\end{center}
+\normalsize \today\\[2cm]	% Todays date
+\normalsize \textsc{Miliyon T.} 	% Subtitle of the document		
+% Lower rule + 0.5cm spacing
+}
+
+\begin{document}
+\clearpage
+
+\printtitle	
+
+\thispagestyle{empty}
+
+\newpage
+
+\listofquestions
+
+\newpage
+%----------------------------------------------------------------------------------------
+%	QUESTIONS AND ANSWERS
+%----------------------------------------------------------------------------------------
+\section{Frequently Asked Questions}
+\question{Question \thequestions: What is the degree of zero polynomial?}\label{quest1}
+
+\fbox{Answer:} \ The degree of the zero polynomial is either left undefined, or is defined to be negative (usually $-1$ or $-\infty$).
+
+\medskip
+
+\underline{\textbf{Explanation}:}\ This is largely a matter of convention, and it rarely comes up in applications. One reason is for this convention is this: Nonzero polynomials satisfy the identity
+$$\deg(pq) = \deg p + \deg q,$$
+and we can extend this to the zero polynomial if we declare $\deg 0 = -\infty$ and use the convention that $a + (-\infty) = -\infty$ for $a$ any non-negative integer (or again $-\infty$).
+
+
+%------------------------------------------------
+
+\question{Question \thequestions: Why is the number one not prime?}\label{quest2}
+
+\underline{\textbf{Explanation}:}\ There are too many reasons for this. But the most important one is "The Fundamental theorem of Arithmetic".
+\begin{thm}[{\color{blue}\textbf{Fundamental theorem of Arithmetic}}]
+Every positive integer greater than one can be written \textcolor{red}{uniquely} as a product of primes, with the prime factors in the product written in order of non-decreasing size.
+\end{thm}
+Here we find the most important use of primes: they are the unique building blocks of the multiplicative group of integers.  In discussion of warfare you often hear the phrase "divide and conquer."  The same principle holds in mathematics.  Many of the properties of an integer can be traced back to the properties of its prime divisors, allowing us to divide the problem (literally) into smaller problems.  The number one is useless in this regard because
+$$a = 1\cdot a = 1\cdot1\cdot a =\cdots$$
+That is, divisibility by one fails to provide us any information about a.
+%------------------------------------------------
+
+\question{Question \thequestions: What is the parity of zero?}\label{quest3}
+
+\fbox{Answer:} \  Even.
+
+\medskip
+
+\underline{\textbf{Explanation}:} \  The simplest way to prove that zero is even is to check that it fits the definition.
+\begin{defn}
+A number is even if it is a multiple of $2$.
+\end{defn}
+Specifically, $0=0\times 2$.
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\question{Question \thequestions: What is the value of zero factorial?}\label{quest4}
+
+\fbox{Answer:} \  One.
+
+\medskip
+
+\underline{\textbf{Explanation}:} \  An empty sum is $0$ and an empty product is $1$. This because $0$ is an identity element for the additive group and $1$ is an identity element for the multiplicative group.
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\question{Question \thequestions: What is zero to zero power?}\label{quest5}
+
+\fbox{Answer:} \  $0^0=1$.
+
+\medskip
+
+\underline{\textbf{Explanation}:} \  The main reason is the Binomial Theorem.
+\begin{thm}[{\color{blue}\textbf{Binomial Theorem}}]
+
+\end{thm}
+Here is an explanation, from the book
+Concrete Mathematics p.162 by R. Graham  et al. \cite{p9}:
+
+Some textbooks leave the quantity $0^0$ undefined, because the functions $0^x$ and $x^0$ have different limiting values when $x$ decreases to $0$. But this is a mistake. We must define $x^0=1$ for all $x$, if the binomial theorem is to be valid when $x=0$, $y=0$, and/or $x=-y$ . The theorem is too important to be arbitrarily restricted! By contrast, the function $0^x$ is quite unimportant.
+
+%------------------------------------------------
+%------------------------------------------------
+
+\question{Question \thequestions: Why does $0.9999\ldots = 1?$}\label{quest6}
+
+\underline{\textbf{Explanation}:} \
+The first thing to realize about the system of notation that we use (decimal notation) is that things like the number $777.7$ really mean "$7\times100 + 7\times10 + 7\times1 + 7/10$". So whenever we write a number in decimal notation and it has more than one digit, we're really implying a sum.\\
+So in modern mathematics, the string of symbols $0.9999\ldots= 1$ is understood to mean "the infinite sum $9/10 + 9/100 + 9/1000 +\cdots$". This in turn is shorthand for "the limit of the sequence of numbers
+\begin{align*}
+\frac{9}{10},
+\frac{9}{10} + \frac{9}{100},
+\frac{9}{10} + \frac{9}{100} + \frac{9}{1000},
+\cdots
+\end{align*}
+One can show that this limit is $9/10 + 9/100 + 9/1000+\cdots$ using Analysis, and a proof really isn't all that hard (we all believe it intuitively anyway); a reference can be found in any of the Analysis texts referenced at the end of this message. Then all we have left to do is show that this sum really does equal $1$:
+\begin{proof}
+\begin{align*}
+0.9999\ldots &=\sum_{n=1}^{\infty}\frac{9}{10^n}\\
+             &=\lim_{m\to\infty}\sum_{n=1}^{m}\frac{9}{10^n}\\
+             &=\lim_{m\to\infty}\frac{.9(1-10^{-(m+1)})}{(1-1/10)}\\
+             &=\lim_{m\to\infty}\frac{.9(1-10^{-(m+1)})}{(9/10)}\\
+             &=\frac{.9}{9/10}\\
+             &= 1
+\end{align*}
+\end{proof}
+%------------------------------------------------
+%------------------------------------------------
+
+\question{Question \thequestions: Can negative numbers be prime?}\label{quest7}
+
+\fbox{Answer One:} \
+
+\medskip
+
+\fbox{Answer Two:} \
+
+\medskip
+
+\fbox{Answer Three:} \
+
+\medskip
+
+\underline{Explanation:} \
+
+%------------------------------------------------
+%------------------------------------------------
+\question{Question \thequestions: Why can't we divide by $0$?}\label{quest8}
+
+\fbox{Answer:} \
+
+\medskip
+
+\underline{Explanation:} \
+
+
+\question{Question \thequestions: What is the difference between variables, parameters and constants? }\label{quest9}
+
+%\fbox{Answer:} \
+
+\medskip
+
+\underline{Explanation:} \ A \textit{constant} is something like a "number".  It doesn't change as variables change.  For example $3$ is a constant as is $\pi$.
+
+A \textit{parameter} is a constant that defines a class of equations. For example $$\left(\frac xa\right)^2 + \left(\frac yb\right)^2 = 1$$  is the general equation for an ellipse.  $a$ and $b$ are constants in this equation, but if we want to talk about the entire class of ellipses then they are also parameters -- because even though they are constant for any \textit{particular} ellipse, they can take any positive real values.
+
+A \textit{variable} is an element of the domain or codomain of a relation. Remember that functions are just relations so the input and output of functions are variables.  For example, if we talk about the function $x \mapsto ax +3$, then $x$ is a variable and $a$ is a parameter -- and thus a constant.  $3$ is also a constant but it is not a parameter.
+
+The Pythagorean theorem states that $a^2 + b^2 = c^2$ for sides $a,b$ and hypotenuse $c$ of a right triangle.  These are parameters - thus they are also constants \cite{p10}.
+
+%------------------------------------------------
+
+\question{Question \thequestions: What is a "point"?(Undefined things in mathematics)}\label{quest10}
+
+Yes, simply find the following line:
+
+\begin{verbatim}
+\setlength\cftparskip{.3em}
+\end{verbatim}
+
+and change the \texttt{.3em} to whatever suits your fancy.
+
+%------------------------------------------------
+\question{Question \thequestions: Negative times negative is positive! Why?} 
+
+\medskip
+
+\underline{Explanation:} \  
+
+\question{Question \thequestions: What if I want to hide the page numbers in the list of questions?}\label{page-numbering}
+
+To remove the trailing dots to the page numbers, find the line:
+
+\begin{verbatim}
+%\renewcommand{\cftdot}{}
+\end{verbatim}
+and uncomment it. To remove the page numbers as well, find the following lines and uncomment them:
+\begin{verbatim}
+%\let\Contentsline\contentsline
+%\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
+\end{verbatim}
+
+%------------------------------------------------
+
+\question{Question \thequestions: Is it possible to number questions?}\label{quest11}
+
+Yes, you can refer to the number of the current question with:
+
+\begin{verbatim}
+\thequestions
+\end{verbatim}
+
+For example, this is question \thequestions. You can even incorporate question numbers into the questions and list of questions automatically by adding:
+
+\begin{verbatim}
+Question \thequestions:
+\end{verbatim}
+
+just before each \texttt{\#1} in the \texttt{\textbackslash questions} definition block in the preamble.
+
+%------------------------------------------------
+
+\question{Question \thequestions: Can I change the color of the question boxes?}\label{quest12}
+
+Just find the following line and change the color specified there:
+
+\begin{verbatim}
+\todo[inline, color=green!40]{\textbf{#1}}
+\end{verbatim}
+
+%----------------------------------------------------------------------------------------
+\begin{thebibliography}{99} %
+
+\bibitem{p1} Wikipedia, \href{https://en.wikipedia.org/wiki/Degree_of_a_polynomial#Degree_of_the_zero_polynomial} {Degree of the zero polynomial}.
+
+\bibitem{p2} MathWorld, \href{http://mathworld.wolfram.com/ZeroPolynomial.html}{Zero Polynomial}.
+
+\bibitem{p3} \href{http://math.stackexchange.com/questions/495378/the-degree-of-zero-polynomial}{The Degree of Zero Polynomial}.
+
+\bibitem{p4} The Prime Pages \href{https://primes.utm.edu/notes/faq/one.html}{Why is the number one not prime?}
+
+
+\bibitem{p5} Numberphile, \href{https://www.youtube.com/watch?v=IQofiPqhJ_s}{$1$ and Prime numbers}.
+
+\bibitem{p6} Numberphile, \href{https://www.youtube.com/watch?v=8t1TC-5OLdM}{Is Zero Even?}
+
+\bibitem{p7} Numberphile, \href{https://www.youtube.com/watch?v=Mfk_L4Nx2ZI}{Zero Factorial.}
+
+\bibitem{p8} Benedict Gross, \href{https://www.youtube.com/watch?v=vI0Q2K2dDYc}{Math Encounters - How Fast Does It Grow?}
+\bibitem{p9} Ronald L. Graham, Donald E. Knuth, Oren Patashnik, "Concrete Mathematics", Second Edition,  Addison-Wesley, 1989.
+\bibitem{p10} Bye\_World, \href{https://math.stackexchange.com/questions/1290373/difference-between-variables-parameters-and-constants/1290405#1290405}{Difference between variables, parameters and constants.}
+\end{thebibliography}
+\end{document}

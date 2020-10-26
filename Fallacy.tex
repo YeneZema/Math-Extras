@@ -1,0 +1,295 @@
+\documentclass[paper=a4, fontsize=12pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+
+
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+% various theorems, numbered by section
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize
+\textsc{Addis Ababa university} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Mathematical Fallacies and Paradoxes \\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Miliyon T.} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+\begin{abstract}{Abstract: }
+  \textbf{Mathematical fallacies} are errors, typically committed with an intent to deceive, that occur in a mathematical proof or argument. A fallacy in an argument doesn't necessarily mean that the conclusion is necessarily incorrect, only that the argument itself is wrong. However, fallacious arguments can have surprising conclusions. Apart from a mathematical fallacy a \textbf{paradox} is a statement that goes against our intuition but may be true, or a statement that is or appears to be self-contradictory. Mathematical paradoxes result from either counter-intuitive properties of infinity, or self-reference.
+\end{abstract}
+
+\subsection*{\textbf{First Fallacy}}
+A fallacy due to John Bernoulli\index{Bernoulli, John}, may be stated as follows.
+We have  $(-1)^2 = 1\,.  $
+Take logarithms,  $2 \log(-1) = \log 1 = 0\,.$
+\begin{align*}
+   \log(-1) &= 0\, \\
+         -1 &= e^0\,\\
+         -1 &= 1\,\\
+\end{align*}
+
+The same argument may be expressed thus. Let $x$ be a quantity which satisfies the equation
+$e^x = -1$\\
+Square both sides
+  $$ e^{2x} = 1$$
+  $$\Rightarrow 2x = 0$$
+  $$\Rightarrow x = 0$$
+  $$\Rightarrow e^x = e^0$$
+But $e^x = -1$ and $e^0 = 1$,\\
+$$  -1 = 1$$
+
+\subsection*{\textbf{Second Fallacy}}
+Suppose that $a = b$, then
+\begin{align*}
+ab & =  a^2\, \\
+  ab-b^2 & =  a^2 - b^2\, \\
+ b(a-b) & =  (a+b)(a-b)\, \\
+ b & =  a + b\, \\
+  b & =  2b\,\\
+ 1 & =  2\,
+\end{align*}
+
+\subsection*{\textbf{Third Fallacy}}
+Let $a$ and $b$ be two unequal numbers, and let $c$ be their arithmetic mean, hence
+\begin{align*}
+          a + b &= 2c\,\\
+ (a + b)(a - b) &= 2c(a - b)\,\\
+      a^2 - 2ac &= b^2 - 2bc\,\\
+a^2 - 2ac + c^2 &= b^2 - 2bc + c^2\,\\
+      (a - c)^2 &= (b - c)^2\,\\
+              a &= b\,
+\end{align*}
+
+
+
+\subsection*{\textbf{Fourth Fallacy}}
+From Taylor's expansion, we know that
+\[
+  \log(1 + x) = x - \tfrac{1}{2}x^2 + \tfrac{1}{3}x^3 - \dotsb\,.
+\]
+If $x = 1$, the resulting series is convergent; hence we have
+\begin{align*}
+  \log 2 &= 1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4}
++ \tfrac{1}{5} - \tfrac{1}{6} + \tfrac{1}{7} - \tfrac{1}{8}
++ \tfrac{1}{9} - \dotsb\,.  \\
+ 2 \log 2 &= 2 - 1 + \tfrac{2}{3} - \tfrac{1}{2}
++ \tfrac{2}{5} - \tfrac{1}{3} + \tfrac{2}{7} - \tfrac{1}{4}
++ \tfrac{2}{9} - \dotsb\,.
+\end{align*}
+Taking those terms together which have a common denominator,
+we obtain
+\begin{align*}
+  2 \log 2 & =  1 + \frac{1}{3} - \frac{1}{2} + \frac{1}{5} +
+  \frac{1}{7} - \frac{1}{4} + \frac{1}{9}-\dotsb \\ % inserted final -
+           & =  1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} +
+  \frac{1}{5}-\dotsb \\
+            & =  \log 2\, \\
+          2 &= 1\,\\
+\end{align*}
+
+\subsection*{\textbf{Fifth Fallacy}} This fallacy is very similar to that last
+given. We have
+\begin{align*}
+  \log 2 & = \textstyle 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} +
+  \frac{1}{5} - \frac{1}{6}+\dotsb \\
+         & = \textstyle \left( 1 + \frac{1}{3} + \frac{1}{5} + \dotsb\right) -
+  \left( \frac{1}{2} + \frac{1}{4}  + \frac{1}{6}+\dotsb\right) \\
+         & = \textstyle \left \{  \left( 1 + \frac{1}{3} + \frac{1}{5}  +
+  \dotsb \right)
+  + \left( \frac{1}{2} + \frac{1}{4} + \frac{1}{6} + \dotsb\right)
+  \right\} - 2 \left( \frac{1}{2}  + \frac{1}{4} + \frac{1}{6} +
+  \dotsb \right) \\
+         & = \textstyle \left\{ 1 + \frac{1}{2} + \frac{1}{3} + \dotsb\right\}
+  - \left( 1 + \frac{1}{2} + \frac{1}{3} + \dotsb\right) \\
+         & =  0\,
+\end{align*}
+
+The error in each of the foregoing examples is obvious, but
+the fallacies in the next examples are concealed somewhat
+better.
+
+\subsection*{\textbf{Sixth Fallacy}} We can write the identity $\sqrt{-1} = \sqrt{-1}$
+in the form
+%
+\begin{align*}
+  \sqrt{\frac{-1}{1}} & = \sqrt{\frac{1}{-1}}\,  \\
+   \frac{\sqrt{-1}}{\sqrt{1}} & =  \frac{\sqrt{1}}{\sqrt{-1}} \, \\
+ (\sqrt{-1})^2 & = (\sqrt{1})^2 \,  \\
+ -1 & = 1 \,
+\end{align*}
+
+\subsection*{\textbf{Seventh Fallacy}} Again, we have
+\begin{align*}
+ \sqrt{a} \cdot \sqrt{b} & = \sqrt{ab} \,  \\
+ \sqrt{-1} \cdot \sqrt{-1} & = \sqrt{(-1) (-1)} \,  \\
+ (\sqrt{-1})^2 & =\sqrt{1} \,  \\
+ -1 & = 1 \,
+\end{align*}
+
+\subsection*{\textbf{Eighth Fallacy}}  The following demonstration depends on
+the fact that an algebraical identity is true whatever be the
+symbols used in it, and it will appeal only to those who are
+familiar with this fact.
+
+We have, as an identity,
+\begin{align}\label{i}
+  \sqrt{x-y} = i \sqrt{y-x}
+\end{align}
+where $i$ stands either for $+ \sqrt{-1}$ or for $- \sqrt{-1}$. Now an
+\emph{identity} in $x$ and $y$ is necessarily true whatever numbers $x$
+and $y$ may represent. First put $x = a$ and $y = b$,
+\begin{align}\label{ii}
+    \sqrt{a - b} = i \sqrt{b - a}
+\end{align}
+ Next put $x = b$ and $y = a$,
+\begin{align}\label{iii}
+    \sqrt{b - a} = i \sqrt{a - b}
+\end{align}
+Also since (\ref{i}) is an identity, it follows that in
+(\ref{ii}) and (\ref{iii}) the symbol $i$ must be the same, that
+is, it represents $+ \sqrt{-1}$ or $- \sqrt{-1}$ in both cases. Hence,
+from (\ref{ii}) and (\ref{iii}), we have
+\begin{align*}
+ \sqrt{a-b}\; \sqrt{b - a} & =  i^2 \sqrt{b-a}\; \sqrt{a - b}\,, \\
+    1 & =  i^2\,, \\
+ 1 &= -1 \, .
+\end{align*}
+
+%\subsection*{Ninth Fallacy} The following fallacy is due to
+%D'Alembert
+%{\textit{Opuscules mathématiques}, Paris, 1761, vol.~\textsc{i},
+%p.~201.}. We know that if the product of two numbers is equal to the
+
+%product of two other numbers, the numbers will be in proportion, and
+%from the definition of a proportion it follows that if the first term
+%is greater than the second, then the third term will be greater than
+%the fourth: thus, if $ad=bc$, then $a:b = c:d$, and if in this
+%proportion $a > b$, then $c > d$. Now if we put $a = d =1$ and $b = c
+%= -1$ we have four numbers which satisfy the relation $ad = bc$ and such
+%that $a>b$; hence, by the proposition, $c > d$, that is, $-1 > 1$, which is
+%absurd.
+
+%\subsection*{Tenth Fallacy} The mathematical theory of probability\index
+%{Probabilities, Fallacies in} leads
+%to various paradoxes: of these one specimen will suffice.
+%Suppose three coins to be thrown up and the fact whether each
+%comes down head or tail to be noticed. The probability that
+%all three coins come down head is clearly $(\frac{1}{2})^3$, that is,
+%is $\frac{1}{8}$;
+%similarly the probability that all three come down tail is $\frac{1}{8}$:
+%hence the probability that all the coins come down alike
+%(i.e. either all of them heads or all of them tails) is $\frac{1}{4}$. But,
+%of three coins thus thrown up, at least two must come down alike;
+%now the probability that the third coin comes down head is $\frac{1}{2}$
+%and the probability that it comes down tail is $\frac{1}{2}$, thus the
+%probability that it comes down the same as the other two coins
+%is $\frac{1}{2}$: hence the probability that all the coins come down alike
+%is $\frac{1}{2}$. I leave to my readers to say whether either of these
+%conflicting conclusions is right and if so, which\index
+%{Arithmetical Fallacies|)}%
+%\index{FallaciesArith@\textsc{Fallacies, Arithmetical}|)}.
+
+\subsection*{\textbf{Ninth Fallacy}}
+This paradox is due to my teacher Elias\index{DAlembert@D'Alembert}\footnote{Elias Bogale is one of a few teacher which I have been taught by.} \\
+Consider the following limit\\
+Case I
+\begin{align*}
+ \lim_{n\rightarrow \infty}\frac{1+2+\cdot\cdot\cdot+n}{n^2} & = \lim_{n\rightarrow \infty}\frac{1}{n^2}+ \lim_{n\rightarrow \infty}\frac{2}{n^2}+\cdot\cdot\cdot+\lim_{n\rightarrow \infty}\frac{n}{n^2}\, \\
+                  & = \lim_{n\rightarrow \infty}\frac{1}{n^2}+ \lim_{n\rightarrow \infty}\frac{2}{n^2}+\cdot\cdot\cdot+\lim_{n\rightarrow \infty}\frac{1}{n}\, \\
+               & =0+ 0+\cdot\cdot\cdot+0\, \\
+               & = 0 \,
+\end{align*}
+
+Case II
+\begin{align*}
+ \lim_{n\rightarrow \infty}\frac{1+2+\cdot\cdot\cdot+n}{n^2} & = \lim_{n\rightarrow \infty}\frac{n(n+1)}{2n^2}\,\qquad (Gauss~Sum) \\
+                  & = \lim_{n\rightarrow \infty}\frac{n^2+n}{2n^2}=\lim_{n\rightarrow \infty}\biggl[\frac{n^2}{2n^2}+\frac{n}{2n^2}\biggl] \, \\
+               & =\lim_{n\rightarrow \infty} \frac{n^2}{2n^2}+\lim_{n\rightarrow \infty}\frac{n}{2n^2} \, \\
+               & = \frac{1}{2}+0 \, \\
+               & = \frac{1}{2} \,
+\end{align*}
+Hence from Case I and Case II we can conclude that
+$$0=\frac{1}{2}$$
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{May}
+[Clifford A. Pickover] ~
+A Passion for
+Mathematics, 2005.
+
+\bibitem{amsshort}
+[E. A. Maxwell] ~
+Fallacies in mathematics, 1963.
+
+\bibitem{Jun}
+[Bryan Bunch]~
+Mathematical fallacies and paradoxes, 1982.
+
+\bibitem{notsoshort}
+[Wiki]~
+\href{http://www.wikipedia.org}{Mathematical fallacy}.
+
+\end{thebibliography}
+\end{document}

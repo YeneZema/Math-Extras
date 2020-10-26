@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+\begin{document}
+
+
+\nocite{}
+
+\title{\textbf{Euler Formula}}
+
+\author{Miliyon T.}
+\maketitle
+
+
+\section{Euler factorial formula}
+
+\begin{thm}[Euler formula]
+Let  a and n be nonnegative integers with $a\geq n$. Then
+$$ n!=\sum_{k=0}^n (-1)^k\binom{n}{k}(a-k)^n $$
+
+Which is equivalent to
+
+$$
+n!=a^n - \binom{n}{1}(a-1)^n + \binom{n}{2}(a-2)^n - \binom{n}{3}(a-3)^n + \cdot\cdot\cdot + (-1)^n\binom{n}{n}(a-n)^n $$
+
+\begin{proof}
+It is trivial For $n=1$ 
+\begin{align*}
+1!=a^1-\binom{1}{1}(a-1)^1 \\
+1=a-(a-1)=1
+\end{align*}
+Then, we assume it is true for n
+$$ n!=\sum_{k=0}^n (-1)^k\binom{n}{k}(a-k)^n $$
+Now let's proof that it is true for $n+1$
+\begin{align*}
+\sum_{k=0}^{n+1} (-1)^k\binom{n+1}{k}(a-k)^{n+1}&=\sum_{k=0}^n (-1)^k\binom{n}{k}(a-k)^n \\
+&=\sum_{k=0}^n (-1)^k\binom{n}{k}(a-k)^n
+\end{align*}
+
+
+\end{proof}
+\end{thm} 
+
+
+ \begin{thebibliography}{9}
+
+\bibitem{May}
+[Demissu Gemeda]
+Topics in Linear Algebra,
+Addis Ababa University. 2005
+
+\bibitem{amsshort}
+[Sheldon Axler]
+Linear Algebra Done Right,
+Springer Publishing. 1997
+
+\bibitem{notsoshort}
+[Caroline Laroche Turnage]
+Selected Proofs of Fermat's Little Theorem  and Wilson's Theorem.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage{graphicx,wrapfig,lipsum}
+\usepackage{amsthm}                % better theorem environments
+
+\usepackage{xcolor,cancel}
+\newcommand\hcancel[2][black]{\setbox0=\hbox{$#2$}%
+\rlap{\raisebox{.45\ht0}{\textcolor{#1}{\rule{\wd0}{1pt}}}}#2}
+
+
+\begin{document}
+
+\nocite{}
+
+\title{Epsilon-Delta Proof}
+
+\author{Miliyon T.}
+\maketitle
+\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{\Large Single Variable}}}\\
+
+\begin{wrapfigure}{l}{0.41\textwidth}
+		\includegraphics[width=0.42\textwidth]{delta.png}
+		\\	% this spacer is needed to make the text on the right fit OK
+	\end{wrapfigure}
+
+\textbf{\large Precise Definition of Limit}\\
+Let $f(x)$ be defined on an open interval about $x_0$, except possibly at $x_0$ itself. We say that the limit of $f(x)$ as $x$ approaches $x_0$ is the number L, written as
+$$
+\lim_{x\rightarrow x_0} f(x)=L
+$$
+For every number $\epsilon >0$ , there exists a corresponding number $\delta >0$. Such that for all $x$.
+$$0<|x-x_0|<\delta\Rightarrow|f(x)-L|<\epsilon$$
+\\
+\\
+\\
+
+\textcolor[rgb]{0.50,0.50,0.00}{\textbf{{\Large Historical Note }}}
+\\
+\begin{wrapfigure}{l}{0.3\textwidth}
+		\includegraphics[width=0.3\textwidth]{1.jpg}
+\caption{Cauchy}\label{fig:1}	
+\end{wrapfigure}
+
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. \\
+\textcolor[rgb]{0.00,0.00,1}{\textbf{Augustine Louis Cauchy}} \\
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass.
+\\
+\\
+\\
+
+
+\textcolor[rgb]{0.00,0.00,1}{\textbf{Carl Weierstrass}}
+\\
+\begin{wrapfigure}{l}{0.3\textwidth}
+		\includegraphics[width=0.3\textwidth]{2.jpg}
+		\caption{Weierstrass}\label{fig:1}	
+\end{wrapfigure}
+
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+
+Let $D$ be a subset of $\bf R$ and let
+$f \colon D \to \mathbf{R}$ be a real-valued function on
+$D$. The function $f$ is said to be \emph{continuous} on
+$D$ if, for all $\epsilon > 0$ and for all $x \in D$,
+there exists some $\delta > 0$ (which may depend on $x$)
+such that if $y \in D$ satisfies
+
+One may readily verify that if $f$ and $g$ are continuous
+functions on $D$ then the functions $f+g$, $f-g$ and
+$f.g$ are continuous. If in addition $g$ is everywhere
+non-zero then $f/g$ is continuous.
+\\
+\\
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+
+Let $D$ be a subset of $\bf R$ and let
+$f \colon D \to \mathbf{R}$ be a real-valued function on
+$D$. The function $f$ is said to be \emph{continuous} on
+$D$ if, for all $\epsilon > 0$ and for all $x \in D$,
+there exists some $\delta > 0$ (which may depend on $x$)
+such that if $y \in D$ satisfies
+
+One may readily verify that if $f$ and $g$ are continuous
+functions on $D$ then the functions $f+g$, $f-g$ and
+$f.g$ are continuous. If in addition $g$ is everywhere
+non-zero then $f/g$ is continuous.
+
+\newpage
+
+\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{\Large  Multi-variable}}}\\
+
+    \textbf{\large Precise Definition}\\
+Let $f(x)$ be defined on an open interval about $x_0$, except possibly at $x_0$ itself. We say that the limit of $f(x)$ as $x$ approaches $x_0$ is the number L, written as
+$$
+\lim_{(x,y)\rightarrow (x_0,y_0)} f(x,y)=L
+$$
+If ,for every number $\epsilon >0$ , there exists a corresponding number $\delta >0$. Such that for all $x$.
+$$0<|x-x_0|<\delta\Rightarrow|f(x)-L|<\epsilon$$
+
+\begin{wrapfigure}{l}{0.41\textwidth}
+		\includegraphics[width=0.42\textwidth]{delta.png}
+		\\	% this spacer is needed to make the text on the right fit OK
+	\end{wrapfigure}
+
+The foundations of the rigorous study of \emph{analysis}
+were laid in the nineteenth century, notably by the
+mathematicians Cauchy and Weierstrass. Central to the
+study of this subject are the formal definitions of
+\emph{limits} and \emph{continuity}.
+
+Let $D$ be a subset of $\bf R$ and let
+$f \colon D \to \mathbf{R}$ be a real-valued function on
+$D$. The function $f$ is said to be \emph{continuous} on
+$D$ if, for all $\epsilon > 0$ and for all $x \in D$,
+there exists some $\delta > 0$ (which may depend on $x$)
+such that if $y \in D$ satisfies
+\[ |y - x| < \delta \]
+then
+\[ |f(y) - f(x)| < \epsilon. \]
+
+One may readily verify that if $f$ and $g$ are continuous
+functions on $D$ then the functions $f+g$, $f-g$ and
+$f.g$ are continuous. If in addition $g$ is everywhere
+non-zero then $f/g$ is continuous.
+ \begin{thebibliography}{9}
+
+\bibitem{amsshort}
+[Serg Lang]
+Linear Algebra,
+Addison-Wesley Publishing. 1972
+
+\bibitem{notsoshort}
+[Kolman \S  Hill]
+Introduction to Linear Algebra with Applications.2000
+
+\bibitem{May}
+[Demissu Gemeda]
+An Introduction to Linear Algebra,
+Addis Ababa University Press.2000
+
+\end{thebibliography}
+
+\end{document}

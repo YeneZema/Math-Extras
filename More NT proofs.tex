@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage{xcolor,cancel}
+\newcommand\hcancel[2][black]{\setbox0=\hbox{$#2$}%
+\rlap{\raisebox{.45\ht0}{\textcolor{#1}{\rule{\wd0}{1pt}}}}#2}
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\theoremstyle{plain}
+
+
+\theoremstyle{remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+
+
+
+\begin{document}
+
+\title{Proofs in Number Theory}
+\author{Miliyon T.\\
+Addis Ababa University \\
+Ethiopia}
+\date{February 24, 2014}
+\maketitle
+
+\begin{abstract}
+  Number theory is one of the most elegant, abstract and the more beautiful branches of Mathematics. The Greatest mathematician Carl Friedreich Gauss once said that Mathematics is a Queen of Science and Theory of Number is the Queen of Mathematics. Although, Number Theory have been considered as non-applicable subject nowadays it is become crucial for Internet Cryptography. Here we scribe some elementary proofs in number theory.
+\end{abstract}
+
+\section{Definitions}
+
+\begin{defn}
+A nonempty set $S$ of real numbers is said to be well-ordered if every nonempty subset of $S$ has a least element.
+\end{defn}
+
+\begin{rem}
+Every nonempty finite set of real numbers is well-ordered.
+\end{rem}
+
+\begin{defn}[\textbf{The Well-Ordering Principle}]
+The set $\Bbb N$ of positive integers is well-ordered.
+\end{defn}
+\section{Basic Results}
+\begin{thm}\label{well-1}
+For each integer $m$, the set
+\[S=\{i\in\Bbb Z: i\geq m\}\]
+is well-ordered.
+\end{thm}
+\begin{proof}
+We need only show that every nonempty subset of $S$ has a least element. So let $T$ be a nonempty subset of $S$. If $T$ is a subset of $\Bbb N$, then, by \textbf{the Well-Ordering Principle}, $T$ has a least element. Hence we may assume that $T$ is not a subset of $\Bbb N$. Thus $T-\Bbb N$ is a finite nonempty set and so contains a least element $t$. Since $t\leq 0$, it follows that $t\leq x$ for all $x\in T$; so $t$ is a least element of $T$.
+\end{proof}
+
+\begin{thm}[The Division Algorithm]
+Let $a$ be any integer and $b$ a positive integer. Then there exist unique integers $q$ and $r$ such that                                                                      \[a=qb+r\qquad  \mbox{where } 0\leq r<b\]
+\end{thm}
+\begin{proof}
+The proof consists of two parts. First, we must establish the existence of the integers $q$ and $r$, and then we must show they are indeed unique.
+\begin{enumerate}
+  \item EXISTENCE 
+  
+  \noindent Consider the set $S=\{a-bn|(n\in \Bbb Z) \mbox{ and } (a-bn\geq 0)\}$. Clearly, $S\subset \Bbb W$. We shall show that $S$ contains a least element. To this end, first we will show that $S$ is a non empty subset of $\Bbb W$:
+  \begin{description}
+    \item[Case 1:] Suppose $a\ge 0$. Then $a=a-b\cdot 0\in S$, so $S$ contains an element.
+    \item[Case 2:] Suppose $a<0$. Since $b\in \Bbb Z^+, b\geq 1$. Then $-ba\geq -a$; that is, $a-ba\geq 0$.
+  \end{description}
+  Consequently, $a-ba\in S$. In both cases, $S$ contains at least one element, so $S$ is a nonempty subset of $\Bbb W$. Therefore, by theorem (\ref{well-1}), $S$ contains a least element $r$. Since $r\in S$, an integer $q$ exists such that $r=a-bq$, where $r\ge 0$.
+  
+  \noindent To show that  $r<b$: We will prove this by contradiction. Assume $r\geq b$. Then $r-b\geq 0$. But $r-b=(a-bq)-b=a-b(q+1)$. Since $a-b(q+1)$ is of the form $a-bn$ and is greater than $0$, $a-b(q+1)\in S$; that is, $r-b\in S$. Since $b>0$, $r-b<r$. Thus, $r-b$ is smaller than $r$ and is in $S$. This contradicts our choice of $r$, so $r<b$. Thus, there are integers $q$ and $r$ such that $a=bq+r$, where $0\leq r<b$.
+  
+  \item UNIQUENESS 
+  
+  \noindent We would like to show that the integers $q$ and $r$ are unique. Assume there are integers $q,q',r$, and $r'$ such that $a=bq+r$ and $a=bq'+r'$, where $0\leq r<b$ and $0\leq r'<b$. 
+  
+  \noindent Assume, for convenience, that $q\geq q'$. Then $r-r'=b(q-q')$. Because $q\geq q'$, $q-q'\geq 0$ and hence $r-r'\geq 0$. But, because $r<b$ and $r'<b$, $r-r'<b$. Suppose $q>q'$; that is, $q-q'\geq 1$. Then $b(q-q')\geq b$; that is, $r-r'\geq b$. This is a contradiction because $r-r'<b$. Therefore, $q\ngtr q'$; thus, $q=q'$, and hence, $r=r'$. Thus, the integers q and r are unique, completing the uniqueness proof.
+\end{enumerate}
+\end{proof}
+\newpage
+ \begin{thebibliography}{9}
+
+\bibitem{amsshort}
+Euclid's Element:
+The Thirteen Book of Euclid translated by Sir Thomas L. Heath
+Cambridge University press. 1968.
+\bibitem{May}
+[Tom Apostle]
+An Introduction to Analytic Number Theory
+California Institute of Technology. 1976.
+
+\bibitem{notsoshort}
+[Jeffry Stopple]
+A Primer of Analytic Number Theory From Pythagoras to Riemann
+Cambridge  University  Press. 2003.
+
+\bibitem{notsoshort}
+[William Dunham]
+Euler: The Master of us all.
+Mathematical Association of America. 1999.
+\end{thebibliography}
+
+\end{document}

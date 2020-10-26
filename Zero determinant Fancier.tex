@@ -1,0 +1,302 @@
+\documentclass[12pt]{article}
+\usepackage{euler}
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm,amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage[framemethod=tikz]{mdframed}
+\usetikzlibrary{calc}
+\usepackage{chngcntr}
+\usepackage{lipsum}
+
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+\usepackage{cleveref}	
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+%% counters
+\newcounter{theorem}
+\newcounter{lemma}
+\newcounter{corollary}
+\counterwithin{theorem}{section}
+\counterwithin{lemma}{section}
+\counterwithin{corollary}{section}
+% names for the structures
+\newcommand\theoname{Theorem}
+\newcommand\lemmname{Lemma}
+\newcommand\coroname{Corollary}
+
+\makeatletter
+% mdf key for the eventual notes in the structures
+\def\mdf@@mynote{}
+\define@key{mdf}{mynote}{\def\mdf@@mynote{#1}}
+
+% style for theorems
+\mdfdefinestyle{mytheo}{
+settings={\refstepcounter{theorem}},
+linewidth=1pt,
+innertopmargin=1.5\baselineskip,
+roundcorner=10pt,
+backgroundcolor=blue!05,
+linecolor=orange,
+singleextra={
+  \node[xshift=10pt,thick,draw=blue,fill=blue!20,rounded corners,anchor=west] at (P-|O) %
+  {\strut{\bfseries\theoname~\thetheorem}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+},
+firstextra={
+  \node[xshift=10pt,thick,draw=blue,fill=blue!20,rounded corners,anchor=west] at (P-|O) %
+  {\strut{\bfseries\theoname~\thetheorem}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+}
+}
+% style for coroll
+\mdfdefinestyle{mycoro}{
+settings={\refstepcounter{corollary}},
+linewidth=1pt,
+innertopmargin=1.5\baselineskip,
+roundcorner=10pt,
+backgroundcolor=green!05,
+linecolor=orange,
+singleextra={
+  \node[xshift=10pt,thick,draw=yellow,fill=yellow!20,rounded corners,anchor=west] at (P-|O) %
+  {\strut{\bfseries\coroname~\thecorollary}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+},
+firstextra={
+  \node[xshift=10pt,thick,draw=yellow,fill=yellow!20,rounded corners,anchor=west] at (P-|O) %
+  {\strut{\bfseries\coroname~\thecorollary}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+}
+}
+
+% style for lemmas
+\mdfdefinestyle{mylemm}{
+settings={\refstepcounter{lemma}},
+linewidth=1pt,
+innertopmargin=1.5\baselineskip,
+roundcorner=10pt,
+backgroundcolor=red!05,
+linecolor=red!70!black,
+singleextra={
+  \node[xshift=10pt,thick,draw=green,fill=green!20,rounded corners,anchor=west] at (P-|O) %
+  {\strut{\bfseries\lemmname~\thelemma}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+},
+firstextra={
+  \node[xshift=10pt,thick,draw=green,fill=green!20,rounded corners,anchor=west] at (P-|O) %
+ {\strut{\bfseries\lemmname~\thelemma}\ifdefempty{\mdf@@mynote}{}{~(\mdf@@mynote)}};
+}
+}
+% some auxiliary environments
+\newmdenv[style=mytheo]{theor}
+\newmdenv[style=mylemm]{lemm}
+\newmdenv[style=mycoro]{coro}
+% the actual environments
+\newenvironment{theorem}[1][]
+  {\begin{theor}[mynote=#1]}
+  {\end{theor}}
+\newenvironment{lemma}[1][]
+  {\begin{lemm}[mynote=#1]}
+  {\end{lemm}}
+\newenvironment{corollary}[1][]
+  {\begin{coro}[mynote=#1]}
+  {\end{coro}}
+\makeatother
+
+\begin{document}
+
+
+\nocite{}
+
+\title{Zero Determinants}
+\date{October 31, 2014}
+\author{Miliyon T.}
+\maketitle
+
+\begin{abstract}
+  The determinant of a matrix has a versatile application. For instance if the determinant of a coefficient matrix of a given system is zero, then it follows that the equations(which form the system) are not linearly independent. The determinant is also helpful in determining whether a given matrix is invertible or not. If the matrix contain zero row(column) or if one row(column) of the matrix is a multiple of the other, then the determinant of that matrix becomes zero. A matrix with zero determinant is known as a \textbf{singular matrix} and it is known that singular matrices are not invertible. In this paper, we will try to study some simple property which characterize singular matrices.
+\end{abstract}
+
+\section{Definitions}
+
+\begin{itemize}
+\item \textbf{Matrix}: is a rectangular array of numbers, symbols, or expressions,
+arranged in rows and columns.\\
+e.g. Matrix $A$ of order $n$ is given by
+  \begin{gather*}
+  A = \begin{bmatrix}
+      a_{11}  & \cdots & a_{1n} \\
+      \vdots  & \ddots & \vdots \\
+      a_{n1}  & \cdots & a_{nn}
+    \end{bmatrix}
+  \end{gather*}
+
+\item \textbf{Square Matrix}: is a matrix with equal number of rows and columns.
+
+\item \textbf{Determinant}: is a useful value that can be computed from a square matrix.
+
+\textmd{\textsc{Determinant for\footnote{For $3\times3$ matrix one can use \textit{Sarrus' rule} to determine the determinant.} $2\times 2$ matrix}}:
+Given a matrix
+\[
+  A = \begin{bmatrix}
+      a   & b \\
+       c  & d
+    \end{bmatrix}
+\]
+\[
+\det(A)=ad-bc.
+\]
+\item \textbf{Minor and Cofactor:} If $A$ is a square matrix, then the \textbf{minor} $A_{ij}$ of the element $a_{ij}$ is the determinant of the matrix obtained by deleting the $i^{th}$ row and $j^{th}$ column of $A$. Then the cofactor $\Delta_{ij}$ is given by $\Delta_{ij} =(-1)^{i+j}  \det(A_{ij})$.
+\end{itemize}
+
+\begin{itemize}
+\item \textbf{Laplace Expansion(for\footnote{Leibniz formula can be also used to calculate the determinant of $n\times n$ matrix, $$\det(A)=\sum_{\sigma\in S_n}\text{sgn}(\sigma)\prod_{i=1}^{n}a_{\sigma(i),i}$$} $n\times n$ matrix)}\\
+Let $A=(a_{ij})$ be a square matrix of order $n$ where $n\geq 3.$ Then, $\det(A)$ can be expressed as a cofactor expansion by using any row of $A$.
+\begin{equation}
+\det(A)= \sum_{j=1}^n (-1)^{i+j} a_{ij} \det(A_{ij})
+\end{equation}
+\end{itemize}
+\section{Facts}
+
+\begin{lemma}\label{lem}
+The determinant of any $3\times 3$ matrix with \textbf{row(column) of common difference} is zero.
+\end{lemma}
+\begin{proof}
+Let's take a $3\times3$ matrix
+\[
+  A = \begin{bmatrix}
+      a  & b & c \\
+      d  & e & f \\
+      g  & h & i
+    \end{bmatrix}
+\]
+Since the matrix is with \textbf{row of common difference}\footnote{In each row the entries are differ by a constant. This constant may \textbf{vary} from one row to the other.} the rows satisfy some arithmetic progression. Say,
+\begin{align*}
+b=a+x, &\qquad c=b+x\\
+e=d+y, &\qquad f=e+y\\
+h=g+z, &\qquad i=h+z
+\end{align*}
+Then the matrix become
+\begin{align*}
+  A =\begin{bmatrix}
+      a  & a+x & b+x \\
+      d  & d+y & e+y \\
+      g  & g+z & h+z
+    \end{bmatrix}
+    =\begin{bmatrix}
+      a  & a+x & a+2x \\
+      d  & d+y & d+2y \\
+      g  & g+z & g+2z
+    \end{bmatrix}
+\end{align*}
+Computing the determinant
+\begin{align*}
+  det(A) &=\begin{vmatrix}
+      a  & a+x & a+2x \\
+      d  & d+y & d+2y \\
+      g  & g+z & g+2z
+    \end{vmatrix}
+    =a\cdot\begin{vmatrix}
+    d+y  & d+2y \\
+     g+z  & g+2z
+    \end{vmatrix}
+    -d\cdot\begin{vmatrix}
+    a+x  & a+2x \\g+z  & g+2z
+    \end{vmatrix}
+    +g\cdot\begin{vmatrix}
+     a+x  & a+2x \\
+     d+y  & d+2y
+     \end{vmatrix}\\
+&= a\cdot(dz-gy)-d\cdot(az-gx)+g\cdot(ay-dx)\\
+&=adz-agy-a dz+dg x+a gy-d gx\\
+&=(ad z-a dz)+(a gy-ag y)+(dg x-d gx)=0
+\end{align*}
+\end{proof}
+
+\begin{theorem}[Zero determinant Theorem]
+Given any square matrix $A$ of order $n\ge3$. If $A$ is a matrix with \textbf{row(column) of common difference}, then the determinant of $A$ is zero.
+\end{theorem}
+
+\begin{proof}
+Consider an $n\times n$ matrix $A$ with row of common difference
+\[
+  A =\begin{bmatrix}
+      a_{11}  & \cdots & a_{1n} \\
+      \vdots  & \ddots & \vdots \\
+      a_{n1}  & \cdots & a_{nn}
+    \end{bmatrix}
+\]
+From Laplace expansion we have
+$$
+ \det(A)= \sum_{j=1}^n (-1)^{i+j} a_{ij} \det(A_{ij})
+$$
+
+$$
+=(-1)^{1+1} a_{11} \det(A_{11})+(-1)^{1+2} a_{12} \det(A_{12})+\cdot\cdot\cdot+(-1)^{n+1} a_{1n} \det(A_{1n})
+$$
+If each matrices $A_{11},A_{12},\cdot\cdot\cdot,A_{1n}$ are $3\times3$ matrix then we are done. But if not we will repeat this process until we get a $3\times3$ matrix.\\
+Then this $3\times3$ matrix is a matrix with \textbf{row of common difference} since the bigger matrix $A$(from which it constructed) itself is a matrix with \textbf{row of common difference}.\\
+Thus, the determinant of each matrix $A_{11},A_{12},\cdot\cdot\cdot,A_{1n}$ is zero by lemma (\ref{lem}). Then
+\begin{align*}
+\det(A)&=(-1)^{1+1} a_{11} \det(A_{11})+(-1)^{1+2} a_{12} \det(A_{12})+\cdot\cdot\cdot+(-1)^{n+1} a_{1n} \det(A_{1n})\\
+&=(-1)^{1+1} a_{11} (0)+(-1)^{1+2} a_{12} (0)+\cdot\cdot\cdot+(-1)^{n+1} a_{1n} (0)\\
+&=0
+\end{align*}
+Therefore, $\det(A)=0$.
+\end{proof}
+
+\begin{coro}
+If $A$ is a square matrix with consecutive entries, then the determinant of $A$ is zero.
+\end{coro}
+
+\subsection*{Conclusion}
+This is just a nice way of saying; if a matrix is with row(column) of common difference, then somehow we can express one row(column) of that matrix as a linear combination of the other.\\
+A trivial matrix with zero determinant is; a matrix with zero row(column) or a matrix containing a row(column) which is a scalar multiple of some other row(column). But by using our result, we can easily generate a non trivial matrix of determinant zero.
+
+\newpage
+
+ \begin{thebibliography}{9}
+
+\bibitem{amsshort}
+[Serg Lang]
+Linear Algebra,
+Addison-Wesley Publishing, 1972.
+
+\bibitem{notsoshort}
+[Kolman \S ~Hill]
+Introduction to Linear Algebra with Applications, 2000.
+
+\bibitem{May}
+[Demissu Gemeda]
+An Introduction to Linear Algebra,
+AAU Press, 2000.
+
+\end{thebibliography}
+
+\end{document}
